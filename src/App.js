@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Detail from "./components/Detail";
+import Mascotas from "./components/Mascotas";
+import NavBar from "./components/NavBar";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [mascotas, setMascotas] = useState([]);
+
+  useEffect(() => {
+    const URL =
+      "https://gist.githubusercontent.com/josejbocanegra/829a853c6c68880477697acd0490cecc/raw/99c31372b4d419a855e53f0e891246f313a71b20/mascotas.json";
+    fetch(URL)
+      .then((data) => data.json())
+      .then((data) => {
+        setMascotas(data);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Mascotas mascotas={mascotas} />} />
+          <Route path="/mascotas" element={<Mascotas mascotas={mascotas} />} />
+          <Route
+            path="/mascotas/:mascotaId"
+            element={<Detail mascotas={mascotas} />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+

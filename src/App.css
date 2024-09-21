@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-custom {
+  background-color: #422a7a !important; /* Fondo negro */
+  color: #ffffff !important; /* Texto blanco */
+  width: 100%; /* Asegurar que ocupa todo el ancho */
+  text-align: left; /* Alinear el texto a la izquierda */
+  padding: 10px; /* Un poco de relleno para mejorar el diseño */
+}
+
+.navbar-custom .navbar-brand {
+  margin-left: 30px; /* Eliminar margen para alinear el texto completamente a la izquierda */
+  color: white; /* Color blanco para los enlaces */
+  text-decoration: none; /* Eliminar subrayado */
+}
+
+.navbar-custom .navbar-brand:hover {
+  color: white; /* Mantener el color blanco al pasar el ratón */
+  text-decoration: none; /* Asegurar que no aparezca el subrayado al pasar el ratón */
+}
